@@ -1,7 +1,7 @@
 const Hero = () => {
   return (
     <section className="flex justify-center items-center pt-5 pb-5 h-[15rem] bg-blue-700 border-t-2 border-white">
-      <div className="max-w-[1200px] text-white text-center">
+      <div className="container-xl lg:container m-auto  text-white text-center">
         <h1 className="text-4xl font-bold tracking-wide mb-4">
           Become a React Dev
         </h1>
