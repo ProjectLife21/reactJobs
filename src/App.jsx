@@ -1,21 +1,13 @@
-// components
-import {
-  Navbar,
-  Hero,
-  HomeCards,
-  JobListings,
-  ViewAllJobs,
-} from "./components";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <div>Hello world!</div>,
+  },
+]);
 
 const App = () => {
-  return (
-    <div>
-      <Navbar />
-      <Hero />
-      <HomeCards />
-      <JobListings />
-      <ViewAllJobs />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 export default App;
