@@ -1,5 +1,11 @@
 // components
-import { Navbar, Hero, HomeCards, JobListings } from "./components";
+import {
+  Navbar,
+  Hero,
+  HomeCards,
+  JobListings,
+  ViewAllJobs,
+} from "./components";
 
 const App = () => {
   return (
@@ -8,6 +14,7 @@ const App = () => {
       <Hero />
       <HomeCards />
       <JobListings />
+      <ViewAllJobs />
     </div>
   );
 };
