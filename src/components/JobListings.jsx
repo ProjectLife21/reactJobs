@@ -3,10 +3,11 @@ import Job from "./Job";
 // custom fetch hook
 import useFetch from "../customHooks/useFetch";
 
-const jobsUrl = "http://localhost:3000/jobs";
+// API
+import { getAllJobs } from "../API/jobs";
 
 const JobListings = ({ isHome = false }) => {
-  const { data: jobs, isLoading, error } = useFetch(jobsUrl);
+  const { data: jobs, isLoading, error } = useFetch(getAllJobs);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
