@@ -83,6 +83,20 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
+    },
+    {
+      "id": "121",
+      "title": "REMOTE JOB",
+      "type": "Remote",
+      "description": "REMOTE DESC",
+      "location": "REMOTE LOCATION",
+      "salary": "$175K - 200K",
+      "company": {
+        "name": "REMOTE COMPANY NAME",
+        "description": "COMPANY DESC",
+        "contactEmail": "contact.email@gmail.com",
+        "contactPhone": "123-456-789"
+      }
     }
   ]
 }

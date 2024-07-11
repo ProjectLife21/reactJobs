@@ -1,6 +1,14 @@
 import { useState } from "react";
 
+// API
+import { addNewJob } from "../API/jobs";
+
+// custom hook mutation
+import { useMutation } from "../customHooks/useMutation";
+
 const AddJobPage = () => {
+  const { error, loading, mutation } = useMutation();
+
   const [file, setFile] = useState();
   const [title, setTitle] = useState("");
   const [type, setType] = useState("Full-Time");
@@ -12,11 +20,32 @@ const AddJobPage = () => {
   const [contactEmail, setContactEmail] = useState("");
   const [contactPhone, setContactPhone] = useState("");
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const newJob = {
+      id: Math.floor(Math.random() * 1000).toString(),
+      title,
+      type,
+      description,
+      location,
+      salary,
+      company: {
+        name: companyName,
+        description: companyDescription,
+        contactEmail,
+        contactPhone,
+      },
+    };
+
+    await mutation(addNewJob(), newJob);
+  };
+
   return (
     <section className="bg-indigo-50">
       <div className="container m-auto max-w-2xl py-24">
         <div className="bg-white px-6 py-8 mb-4 rounded-md border m-4 md:m-0">
-          <form>
+          <form onSubmit={handleSubmit}>
             <h2 className="text-3xl text-center font-semibold mb-6">Add Job</h2>
             <div className="mb-4">
               <label
@@ -206,18 +235,21 @@ const AddJobPage = () => {
               />
             </div>
             <div className="mb-4">
-              <img
-                src={file}
-                className="m-auto w-[10rem] h-[10rem] object-cover rounded-[50%]"
-                alt=""
-              />
+              {file && (
+                <img
+                  src={file}
+                  className="m-auto w-[10rem] h-[10rem] object-cover rounded-[50%]"
+                  alt=""
+                />
+              )}
             </div>
             <div>
               <button
                 className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                 type="submit"
+                disabled={loading}
               >
-                Add Job
+                {loading ? "Sending..." : "Add Job"}
               </button>
             </div>
           </form>
