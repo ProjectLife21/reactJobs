@@ -4,8 +4,9 @@ import { useState } from "react";
 
 const jobsUrl = "http://localhost:3000/jobs";
 
-const JobListings = () => {
+const JobListings = ({ isHome = false }) => {
   const [jobs, setJobs] = useState([]);
+  const listOfJobs = isHome ? jobs : jobs?.slice(0, 3);
 
   const fetchJobs = async () => {
     try {
@@ -33,7 +34,7 @@ const JobListings = () => {
           Recent Jobs
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {jobs?.slice(0, 3).map((job) => {
+          {listOfJobs?.map((job) => {
             const { id } = job;
             return <Job key={id} {...job} />;
           })}

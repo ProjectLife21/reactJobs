@@ -1,4 +1,14 @@
+// components
+import { Hero, HomeCards, JobListings, ViewAllJobs } from "../components";
+
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <>
+      <Hero />
+      <HomeCards />
+      <JobListings />
+      <ViewAllJobs />
+    </>
+  );
 };
 export default HomePage;
