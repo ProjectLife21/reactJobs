@@ -1,5 +1,5 @@
 // components
-import { Navbar, Hero, HomeCards } from "./components";
+import { Navbar, Hero, HomeCards, JobListings } from "./components";
 
 const App = () => {
   return (
@@ -7,6 +7,7 @@ const App = () => {
       <Navbar />
       <Hero />
       <HomeCards />
+      <JobListings />
     </div>
   );
 };
