@@ -1,31 +1,22 @@
-import { useEffect } from "react";
 import Job from "./Job";
-import { useState } from "react";
+
+// custom fetch hook
+import useFetch from "../customHooks/useFetch";
 
 const jobsUrl = "http://localhost:3000/jobs";
 
 const JobListings = ({ isHome = false }) => {
-  const [jobs, setJobs] = useState([]);
+  const { data: jobs, isLoading, error } = useFetch(jobsUrl);
+
+  if (isLoading) {
+    return <h2>Loading...</h2>;
+  }
+
+  if (error.isError) {
+    return <h2>{error?.errorMsg}</h2>;
+  }
+
   const listOfJobs = isHome ? jobs : jobs?.slice(0, 3);
-
-  const fetchJobs = async () => {
-    try {
-      const response = await fetch(jobsUrl);
-
-      if (!response.ok) {
-        throw new Error(`Something went wrong. Please try again later...`);
-      }
-
-      const data = await response.json();
-      setJobs(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchJobs();
-  }, []);
 
   return (
     <section className="bg-blue-50 px-4 py-10">
